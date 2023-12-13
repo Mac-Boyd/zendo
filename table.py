@@ -1,7 +1,9 @@
 class Table:
-    def __init__(self, vars, filename):
-        self.vars = vars
+    def __init__(self, filename, usedVars):
+        self.vars = []
         self.filename = filename
+        self.table = {}
+        self.usedVars = usedVars
     def singleLineEval(self, lineNum):
         line = self.readLine(lineNum)
         total = 0
@@ -53,4 +55,13 @@ class Table:
         else:
             return 1
     def makeTable(self):
-        pass
+        for i in range(0, 26):
+            self.vars.append(-1)
+        for i in range(0, self.usedVars):
+            self.vars[i] = 0
+        i = 0
+        while(i < 16):
+            self.table[i] = self.fullEval()
+            i = i + 1
+            for j in range(0, self.usedVars):
+                self.vars[j] = (i >> j) & 1
