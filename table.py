@@ -8,16 +8,26 @@ class Table:
         line = self.readLine(lineNum)
         total = 0
         currExpression = 0 #0 for or, 1 for and
+        notFlag = 0 #if one, negates the next character
         for char in line:
             charNum = ord(char)
             index = charNum - 65
             if(charNum < 65):
                 return -1
+            elif(charNum == 126):
+                notFlag = 1
             elif(charNum < 90):
                 if(currExpression == 0):
-                    total = total + self.vars[index]
+                    if(notFlag == 0):
+                        total = total + self.vars[index]
+                    else:
+                        total = total + (1 - self.vars[index])
                 else:
-                    total = total * self.vars[index]
+                    if(notFlag == 0):
+                        total = total * self.vars[index]
+                    else:
+                        total = total * (1 - self.vars[index])
+                notFlag = 0
             elif(charNum == 94):
                 currExpression = 1
             elif(charNum == 118):
@@ -40,7 +50,9 @@ class Table:
         total = 0
         with open(self.filename, 'r') as rule:
             for line in rule:
-                if(line[0] == "^"):
+                if(line[0] == "#"):
+                    break
+                elif(line[0] == "^"):
                     currentOp = 1
                 elif(line[0] == "v"):
                     currentOp = 0
@@ -60,7 +72,7 @@ class Table:
         for i in range(0, self.usedVars):
             self.vars[i] = 0
         i = 0
-        while(i < 16):
+        while(i < pow(2, self.usedVars)):
             self.table[i] = self.fullEval()
             i = i + 1
             for j in range(0, self.usedVars):
