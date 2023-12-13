@@ -7,22 +7,29 @@ class Table:
         total = 0
         currExpression = 0 #0 for or, 1 for and
         for char in line:
-            if(ord(char) < 65):
+            charNum = ord(char)
+            index = charNum - 65
+            if(charNum < 65):
                 return -1
-            elif(ord(char) < 90):
+            elif(charNum < 90):
                 if(currExpression == 0):
-                    total = total + vars[ord(char) - 65]
+                    total = total + self.vars[index]
                 else:
-                    total = total * vars[ord(char) - 65]
-            elif(ord(char) == 94):
+                    total = total * self.vars[index]
+            elif(charNum == 94):
                 currExpression = 1
-            elif(ord(char) == 118):
+            elif(charNum == 118):
                 currExpression = 0
+        if(total >= 1):
+            return 1
+        else:
+            return 0
     def readLine(self, lineNum):
         with open(self.filename, 'r') as rule:
             count = 0
             for line in rule:
+                print(line)
                 if(count == lineNum):
-                    return line.strip().replace(" ", "")
+                    return line.replace(" ", "")
                 count += 1
-            
+            return "-1"
