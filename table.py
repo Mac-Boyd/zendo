@@ -28,8 +28,29 @@ class Table:
         with open(self.filename, 'r') as rule:
             count = 0
             for line in rule:
-                print(line)
                 if(count == lineNum):
-                    return line.replace(" ", "")
+                    return line.replace(" ", "").replace('\n', "")
                 count += 1
             return "-1"
+    def fullEval(self):
+        currentLine = 0
+        currentOp = 0 #again, 0 for or, 1 for and
+        total = 0
+        with open(self.filename, 'r') as rule:
+            for line in rule:
+                if(line[0] == "^"):
+                    currentOp = 1
+                elif(line[0] == "v"):
+                    currentOp = 0
+                else:
+                    if(currentOp == 0):
+                        total = total + self.singleLineEval(currentLine)
+                    else:
+                        total = total * self.singleLineEval(currentLine)
+                currentLine += 1         
+        if(total == 0):
+            return 0
+        else:
+            return 1
+    def makeTable(self):
+        pass

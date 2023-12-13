@@ -1,1 +1,3 @@
-A ^ B v C
+A ^ B
+v
+C ^ D
