@@ -13,7 +13,7 @@ class PriorityEvaluator:
         for i in range(0, len(self.evaluatedRules)):
             self.priority[self.evaluatedRules[i].speed].append(i)            
 
-    def evalPrio(self, speedClass):
+    def evalInternalPriority(self, speedClass):
         internalOrder = []
         fragility = []
         for i in range(0, len(self.priority[speedClass])):
@@ -21,5 +21,25 @@ class PriorityEvaluator:
             for j in self.table:
                 if (j >> (self.priority[speedClass][i]) & 1):
                     k = j - pow(self.priority[speedClass][i], 2)
-                    if(self.table[i] != self.table.at(j)):
+                    if(self.table[i] != self.table[k]):
                         fragility[self.priority[speedClass][i]][1] += 1
+        fragility.sort(key = lambda x: x[1])
+        for i in fragility:
+            internalOrder.append(i[0])
+        self.priority[speedClass] = internalOrder
+
+    def evalRule(self, evaluatedRules):
+        possibilities = self.table
+        #i is the speed cadegory, j is the variable index (i hope)
+        for i in self.priority:
+            for j in i:
+                var = self.rules[j].evalRule()
+                for k in range(0, len(possibilities)):
+                    if((k >> j & 1) != var):
+                        possibilities[k] = -1
+                evalDone = set([i for i in possibilities if i != -1])
+                if(len(evalDone == 1)):
+                    return evalDone[0]
+        return -1
+
+                    
