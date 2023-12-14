@@ -30,7 +30,7 @@ class PriorityEvaluator:
 
     def evalRule(self):
         possibilities = self.table
-        #i is the speed cadegory, j is the variable index (i hope)
+        #i is the speed category, j is the variable index (i hope)
         for i in self.priority:
             for j in i:
                 var = self.rules[j].evalRule()
