@@ -2,7 +2,7 @@ class Table:
     def __init__(self, filename, usedVars):
         self.vars = []
         self.filename = filename
-        self.table = {}
+        self.table = []
         self.usedVars = usedVars
     def singleLineEval(self, lineNum):
         line = self.readLine(lineNum)
@@ -71,7 +71,7 @@ class Table:
             self.vars.append(0)
         i = 0
         while(i < pow(2, self.usedVars)):
-            self.table[i] = self.fullEval()
+            self.table.append(self.fullEval())
             i = i + 1
             for j in range(0, self.usedVars):
-                self.vars[j] = (i >> j) & 1
+                self.vars[self.usedVars - j - 1] = (i >> j) & 1
