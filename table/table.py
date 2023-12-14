@@ -67,10 +67,8 @@ class Table:
         else:
             return 1
     def makeTable(self):
-        for i in range(0, 26):
-            self.vars.append(-1)
         for i in range(0, self.usedVars):
-            self.vars[i] = 0
+            self.vars.append(0)
         i = 0
         while(i < pow(2, self.usedVars)):
             self.table[i] = self.fullEval()
