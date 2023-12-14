@@ -28,7 +28,7 @@ class PriorityEvaluator:
             internalOrder.append(i[0])
         self.priority[speedClass] = internalOrder
 
-    def evalRule(self, evaluatedRules):
+    def evalRule(self):
         possibilities = self.table
         #i is the speed cadegory, j is the variable index (i hope)
         for i in self.priority:
