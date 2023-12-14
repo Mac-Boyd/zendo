@@ -19,7 +19,7 @@ class PriorityEvaluator:
         for i in range(0, len(self.priority[speedClass])):
             fragility.append([self.priority[speedClass][i], 0])
             for j in self.table:
-                if (j >> (len(self.rules) - self.priority[speedClass][i]) & 1):
+                if (j >> (self.priority[speedClass][i]) & 1):
                     k = j - pow(self.priority[speedClass][i], 2)
                     if(self.table[i] != self.table.at(j)):
                         fragility[self.priority[speedClass][i]][1] += 1
