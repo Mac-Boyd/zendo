@@ -14,6 +14,7 @@ class Assigner:
                     return self.vars
                 else:
                     ruleNum = line[0:3]
+                    #there may be a way to assign all of the rules automatically, ill look into that as we get more of them. for now, this should work fine
                     RULE_DICTIONARY = {'000': rule.NumRule}
                     self.vars.append(RULE_DICTIONARY.get(ruleNum)(self.graph))
                     self.vars[currRule].parameters = line[3:]
