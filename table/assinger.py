@@ -14,9 +14,7 @@ class Assigner:
                     return self.vars
                 else:
                     ruleNum = line[0:3]
-                    match ruleNum:
-                        case '000':
-                            numRule = rule.NumRule(self.graph)
-                            self.vars.append(numRule)
+                    RULE_DICTIONARY = {'000': rule.NumRule}
+                    self.vars.append(RULE_DICTIONARY.get(ruleNum)(self.graph))
                     self.vars[currRule].parameters = line[3:]
                 currRule = currRule + 1

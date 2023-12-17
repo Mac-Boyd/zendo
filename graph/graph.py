@@ -1,3 +1,3 @@
 class Graph:
     def __init__(self):
-        self.nodes = 7
+        self.nodes = 5
