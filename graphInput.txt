@@ -1,9 +1,10 @@
-Y, 1, (2, 3)
-B, 2, (1)
-G, 1, (1)
+Y, L, (2, 3)
+B, M, (1)
+G, S, (1)
 #
 graphs are defined as follows:
 the line represents the node number, then the color as a single character, then the size as a number, and finally, the nodes it is connected to.
 e.g. line 5 will be decoded on line 6
-Y, 2, (4, 3, 7)
-Node 5 is yellow, size two, and connected to nodes 4, 3, and 7
+Y, M, (4, 3, 7)
+Node 5 is yellow, medium, and connected to nodes 4, 3, and 7
+sizes are L/M/S (large, medium, small)

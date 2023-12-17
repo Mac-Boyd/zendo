@@ -7,7 +7,7 @@ class GraphInput:
         with open(self.filename, 'r') as nodes:
             lineNum = 0
             for line in nodes:
-                line = line.replace(" ", "").replace('\n', "").replace(",", "").replace("(", "").replace(")", "")
+                line = line.replace(" ", "").replace('\n', "").replace(",", "").replace("(", "").replace(")", "").replace("L", "3").replace("M", "2").replace("S", "1")
                 if(line[0] == '#'):
                     break
                 currNode = [line[0], line[1]]
