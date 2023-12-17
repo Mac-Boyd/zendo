@@ -75,3 +75,4 @@ class Table:
             i = i + 1
             for j in range(0, self.usedVars):
                 self.vars[self.usedVars - j - 1] = (i >> j) & 1
+                #self.vars[j] = (i >> j) & 1

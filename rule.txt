@@ -1,10 +1,10 @@
-~C ^ ~D ^ A
+B ^ ~C
 v
-A ^ B ^ ~C
+C ^ D ^ ~A
 v
-A ^ B ^ D
+C ^ D ^ ~B
 v
-~A ^ ~B ^ C
+A ^ ~B ^ C
 #
 pound signs signal then end of your rule, order of operations is first: bottom to top, then: right to left
 this may take a little getting used to, but im too lazy to fix it right now
