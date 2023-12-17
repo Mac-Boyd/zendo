@@ -1,5 +1,2 @@
-import table
-
-truth = table.Table("rule.txt", 3)
-truth.makeTable()
-print(truth.table)
+import graphInput
+print(graphInput.GraphInput("graphInput.txt").getInput())
