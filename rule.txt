@@ -1,11 +1,4 @@
 A v B
-B ^ ~C
-v
-C ^ D ^ ~A
-v
-C ^ D ^ ~B
-v
-A ^ ~B ^ C
 #
 the number of nodes is less than 5 or the number of nodes is equal to 5
 
