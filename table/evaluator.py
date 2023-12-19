@@ -4,14 +4,16 @@ class PriorityEvaluator:
     def __init__(self, logicalRuleName, evaluatedRules):
         #note that evaluated rules needs to be in variable order (i.e. the rule that corresponds to the variable A needs to be at evaluatedRules[0])
         self.rules = evaluatedRules
-        self.table = table.Table(logicalRuleName, len(evaluatedRules)).makeTable()
+        truthTable = table.Table(logicalRuleName, len(evaluatedRules))
+        truthTable.makeTable()
+        self.table = truthTable.table
         #priority is defined a little weird
         #priority[speed category][internal priority] = variable index
-        self.priority = []
+        self.priority = [[], [], [], [], []]
         #HEY! LISTEN! If I screwed up the number of O() time value thingies this number here will need to change or this whole thing breaks
-        #It's currently 5, but that should go up or down depending on the number of speed categories rules can have        
-        for i in range(0, len(self.evaluatedRules)):
-            self.priority[self.evaluatedRules[i].speed].append(i)            
+        #It's currently 5, but that should go up or down depending on the number of speed categories rules can have       
+        for i in range(0, len(self.rules)):
+            self.priority[self.rules[i].speed].append(i)            
 
     def evalInternalPriority(self, speedClass):
         internalOrder = []
@@ -38,9 +40,10 @@ class PriorityEvaluator:
                     if((k >> j & 1) != var):
                         possibilities[k] = -1
                 evalDone = set(possibilities)
-                if(len(evalDone == 2)):
-                    evalDone.sort()
-                    return evalDone[1]
+                if(len(evalDone) == 2):
+                    sorted(evalDone)
+                    return list(evalDone)[0]
+
         return -1
 
                     

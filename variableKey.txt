@@ -1,0 +1,1 @@
+000: number of nodes (is greater than (000)) (is less than(001)) (is equal to(002)) (xxx)

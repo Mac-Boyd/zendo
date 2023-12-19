@@ -1,0 +1,5 @@
+000 001 005
+000 002 005
+#
+A: the number of nodes is less than 5
+B: the number of nodes is equal to 5

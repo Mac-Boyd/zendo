@@ -11,6 +11,23 @@ class Rule:
         5: O(n^n)'''
         self.speed = speed
         self.graph = graph
+        #Each rule should be numbered, do them in order of creations, for now. Each abstract rule should have a negative number
+        self.num = -1
+        self.paramaters = []
     def evalRule(self):
         raise NotImplementedError
     
+class NumRule(Rule):
+    def __init__(self, graph):
+        self.speed = 0
+        self.graph = graph
+        self.parameters = []
+    def evalRule(self):
+        comparative = self.parameters[0:3]
+        match comparative:
+            case '000':
+                return (self.graph.nodes > int(self.parameters[3:]))
+            case '001':
+                return (self.graph.nodes < int(self.parameters[3:]))
+            case '002':
+                return (self.graph.nodes == int(self.parameters[3:]))
