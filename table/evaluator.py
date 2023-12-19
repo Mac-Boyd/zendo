@@ -22,7 +22,7 @@ class PriorityEvaluator:
             fragility.append([self.priority[speedClass][i], 0])
             for j in self.table:
                 if (j >> (self.priority[speedClass][i]) & 1):
-                    k = j - pow(self.priority[speedClass][i], 2)
+                    k = j - pow(2, self.priority[speedClass][i])
                     if(self.table[i] != self.table[k]):
                         fragility[i][1] += 1
         fragility.sort(key = lambda x: x[1])
@@ -43,6 +43,7 @@ class PriorityEvaluator:
                 if(len(evalDone) == 2):
                     sorted(evalDone)
                     return list(evalDone)[0]
+
         return -1
 
                     
