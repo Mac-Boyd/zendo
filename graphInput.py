@@ -1,3 +1,4 @@
+import pygame
 class GraphInput:
     def __init__(self, filename):
         self.filename = filename
@@ -13,13 +14,13 @@ class GraphInput:
                 currNode = [line[0], line[1]]
                 match currNode[0]:
                     case 'Y':
-                        currNode[0] = 'yellow'
+                        currNode[0] = pygame.Color('#f0ed00')
                     case 'G':
-                        currNode[0] = 'green'
+                        currNode[0] = pygame.Color('#31973b')
                     case 'B':
-                        currNode[0] = 'blue'
+                        currNode[0] = pygame.Color('#2137d6')
                     case other:
-                        currNode[0] = 'red'
+                        currNode[0] = pygame.Color('#d82716')
                 result[1].append(currNode)
                 result[0].append([])
                 for i in range(2, len(line)):
