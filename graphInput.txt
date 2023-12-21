@@ -1,6 +1,9 @@
 Y, L, (2, 3)
 B, M, (1)
 G, S, (1)
+R, M, (2, 3)
+R, S, (6)
+B, L, (5)
 #
 graphs are defined as follows:
 the line represents the node number, then the color as a single character, then the size as a number, and finally, the nodes it is connected to.

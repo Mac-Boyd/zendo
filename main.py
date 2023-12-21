@@ -39,5 +39,5 @@ result = input.getInput()
 nodes = []
 for i in result[1]:
     nodes.append(node.Node(int(i[1]), i[0], [0, 0]))
-drawTest = plane.Plane(graph.Graph(result[0], nodes))
+drawTest = plane.Plane(graph.Graph(result[0], nodes), "graphInput.txt")
 drawTest.drawGraph()
