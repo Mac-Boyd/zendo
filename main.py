@@ -12,14 +12,14 @@ from drawStuff import node
 # print(truth.table)
 
 
-# adjMat = [[0,1,0,0,0,0,0,0],
-#           [1,0,1,0,0,1,0,0],
-#           [0,1,0,1,1,0,0,0],
-#           [0,0,1,0,0,0,0,0],
-#           [0,0,1,0,0,0,0,0],
-#           [0,1,0,0,0,0,1,0],
-#           [0,0,0,0,0,1,0,1],
-#           [0,0,0,0,0,0,1,0]]
+adjMat = [[0,1,0,0,0,0,0,0],
+          [1,0,1,0,0,1,0,0],
+          [0,1,0,1,1,0,0,0],
+          [0,0,1,0,0,0,0,0],
+          [0,0,1,0,0,0,0,0],
+          [0,1,0,0,0,0,1,0],
+          [0,0,0,0,0,1,0,1],
+          [0,0,0,0,0,0,1,0]]
 
 # graphy = graph.Graph(adjMat, [])
 # print("Completeness: " + str(graphy.isComplete()))
@@ -34,5 +34,5 @@ from drawStuff import node
 #     Evaluator.evalInternalPriority(i)
 # print(Evaluator.evalRule())
 
-drawTest = plane.Plane([node.Node(1, 'y', [0, 0]), node.Node(1, 'y', [0, 0]), node.Node(1, 'y', [0, 0]), node.Node(1, 'y', [0, 0])])
+drawTest = plane.Plane(graph.Graph(adjMat, [node.Node(2, 'yellow', [0, 0]), node.Node(1, 'blue', [0, 0]), node.Node(1, 'red', [0, 0]), node.Node(3, 'green', [0, 0]), node.Node(1, 'orange', [0, 0])]))
 drawTest.drawGraph()
