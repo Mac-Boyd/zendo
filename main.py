@@ -1,5 +1,6 @@
 import numpy as np
 import numpy.linalg as lin
+import graphInput
 from graph import graph
 from table import evaluator
 from table import assinger
@@ -12,14 +13,14 @@ from drawStuff import node
 # print(truth.table)
 
 
-adjMat = [[0,1,0,0,0,0,0,0],
-          [1,0,1,0,0,1,0,0],
-          [0,1,0,1,1,0,0,0],
-          [0,0,1,0,0,0,0,0],
-          [0,0,1,0,0,0,0,0],
-          [0,1,0,0,0,0,1,0],
-          [0,0,0,0,0,1,0,1],
-          [0,0,0,0,0,0,1,0]]
+# adjMat = [[0,1,0,0,0,0,0,0],
+#           [1,0,1,0,0,1,0,0],
+#           [0,1,0,1,1,0,0,0],
+#           [0,0,1,0,0,0,0,0],
+#           [0,0,1,0,0,0,0,0],
+#           [0,1,0,0,0,0,1,0],
+#           [0,0,0,0,0,1,0,1],
+#           [0,0,0,0,0,0,1,0]]
 
 # graphy = graph.Graph(adjMat, [])
 # print("Completeness: " + str(graphy.isComplete()))
@@ -33,6 +34,10 @@ adjMat = [[0,1,0,0,0,0,0,0],
 # for i in range(0, 5):
 #     Evaluator.evalInternalPriority(i)
 # print(Evaluator.evalRule())
-
-drawTest = plane.Plane(graph.Graph(adjMat, [node.Node(2, 'yellow', [0, 0]), node.Node(1, 'blue', [0, 0]), node.Node(1, 'red', [0, 0]), node.Node(3, 'green', [0, 0]), node.Node(1, 'orange', [0, 0])]))
+input = graphInput.GraphInput("graphInput.txt")
+result = input.getInput()
+nodes = []
+for i in result[1]:
+    nodes.append(node.Node(int(i[1]), i[0], [0, 0]))
+drawTest = plane.Plane(graph.Graph(result[0], nodes))
 drawTest.drawGraph()

@@ -11,6 +11,15 @@ class GraphInput:
                 if(line[0] == '#'):
                     break
                 currNode = [line[0], line[1]]
+                match currNode[0]:
+                    case 'Y':
+                        currNode[0] = 'yellow'
+                    case 'G':
+                        currNode[0] = 'green'
+                    case 'B':
+                        currNode[0] = 'blue'
+                    case other:
+                        currNode[0] = 'red'
                 result[1].append(currNode)
                 result[0].append([])
                 for i in range(2, len(line)):

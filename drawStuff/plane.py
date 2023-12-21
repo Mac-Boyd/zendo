@@ -5,7 +5,7 @@ class Plane:
     def __init__(self, graph):
         self.nodes = graph.nodeProps
         self.adjMat = graph.adjMat
-        self.radSize = 50
+        self.radSize = 30
         self.screenSize = 750
         
     def positionNodes(self):
@@ -29,7 +29,11 @@ class Plane:
                     running = False
             screen.fill("white")
             for i in range (0, len(self.nodes)):
-                pygame.draw.circle(screen, self.nodes[i].color, (self.nodes[i].position[0], self.nodes[i].position[1]), (self.radSize * (self.nodes[i].size/2)))
+                for j in range(len(self.adjMat[i])):
+                    if(self.adjMat[i][j] == 1):
+                        pygame.draw.line(screen, "black", self.nodes[i].position, self.nodes[j].position)
+            for i in range (0, len(self.nodes)):
+                pygame.draw.circle(screen, self.nodes[i].color, self.nodes[i].position, (self.radSize * (self.nodes[i].size/2)))
             pygame.display.flip()
-            clock.tick(60)
+            clock.tick(10)
         pygame.quit()
